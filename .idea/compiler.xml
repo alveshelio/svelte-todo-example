@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<project version="4">
-  <component name="TypeScriptCompiler">
-    <option name="typeScriptServiceDirectory" value="$USER_HOME$/.nvm/versions/node/v10.4.1/lib/node_modules/typescript" />
-    <option name="versionType" value="SERVICE_DIRECTORY" />
-  </component>
-</project>
