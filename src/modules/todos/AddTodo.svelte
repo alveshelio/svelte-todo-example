@@ -7,17 +7,33 @@
   const dispatch = createEventDispatcher()
   let text = ''
 
+  const addTodo = (e) => {
+    e.preventDefault()
+
+    if (text.trim() !== '') {
+      dispatch(ADD_TODO, { text })
+      text = ''
+    }
+  }
+
 </script>
 
-<form>
-  <label>
-    Todo
-    <input type="text" bind:value={text} />
-  </label>
-  <button on:click={(e) => {
-    e.preventDefault()
-    dispatch(ADD_TODO, { text })
-    text = ''
-  }}>Add Todo</button>
+<style>
+  form {
+    background: #fff;
+    padding: 16px 16px 16px 60px;
+    width: 100%;
+  }
+  input {
+    border: none;
+    font-size: 36px;
+    font-weight: 100;
+    margin: 0;
+    width: 100%;
+  }
+</style>
+
+<form on:submit={addTodo}>
+    <input placeholder="what needds to be done" type="text" bind:value={text} />
 </form>
 

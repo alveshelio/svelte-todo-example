@@ -1,6 +1,6 @@
 <script>
   import { createEventDispatcher } from 'svelte'
-  import { ADD_TODO, TOGGLE_TODO, DELETE_TODO, HIDE_COMPLETED} from '../todoActionTypes'
+  import { ADD_TODO, TOGGLE_TODO, DELETE_TODO, SHOW_COMPLETED} from '../todoActionTypes'
 
 
   const dispatch = createEventDispatcher()
@@ -22,15 +22,17 @@
     dispatch(DELETE_TODO, id)
   }
 
-  const hideCompleted = () => {
+  const showCompleted = () => {
     console.warn('hide completed dispatch')
-    dispatch(HIDE_COMPLETED)
+    dispatch(SHOW_COMPLETED)
   }
+
+
 
   export const TodoActions = {
     addTodo,
     toggleTodo,
     deleteTodo,
-    hideCompleted,
+    showCompleted,
   }
 </script>
