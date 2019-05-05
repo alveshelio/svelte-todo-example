@@ -21,7 +21,7 @@
 <style>
   form {
     background: #fff;
-    padding: 16px 16px 16px 60px;
+    padding: 16px 0 16px 60px;
     width: 100%;
   }
   input {
