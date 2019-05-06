@@ -1,5 +1,6 @@
 <script>
   import { createEventDispatcher} from 'svelte'
+  import { fade } from 'svelte/transition'
   import { TOGGLE_TODO, DELETE_TODO } from './todoActionTypes'
 
   export let text
@@ -13,30 +14,28 @@
   li {
     display: flex;
     justify-content: space-between;
-    padding: 15px 0;
-  }
-  .toggle {
-    text-align: center;
-    width: 40px;
-    height: auto;
-    margin: auto 0;
-    border: none;
+    border-bottom: 1px solid #eee;
+    margin-bottom: 10px;
   }
 
-  label {
+  .todoDone {
+    text-decoration: line-through;
+  }
+
+  .todoItem {
     display: block;
     font-size: 30px;
     line-height: 30px;
     font-weight: 100;
+    margin: 0;
     transition: color 0.4s;
     word-break: break-all;
   }
 </style>
 
-<li>
-  <label on:click={() => dispatch(TOGGLE_TODO, { id })}>
-  <input type="checkbox" class="toggle" />
-  {text} - {completed.toString()} - {id}
-</label>
-<button on:click={() => dispatch(DELETE_TODO, { id })}> 🗑 </button>
+<li transition:fade>
+  <p class="todoItem" class:todoDone={completed} on:click={() => dispatch(TOGGLE_TODO, { id })}>
+    {text}
+  </p>
+  <button on:click={() => dispatch(DELETE_TODO, { id })}> 🗑 </button>
 </li>

@@ -1,10 +1,11 @@
 <script>
   import { createEventDispatcher } from 'svelte'
   import { SHOW_ALL, SHOW_ACTIVE, SHOW_COMPLETED } from './todoActionTypes'
-  const dispatch = createEventDispatcher()
+  import { filters } from './store/todos'
 
   export let todosCount
 
+  const dispatch = createEventDispatcher()
 </script>
 
 <style>
@@ -19,6 +20,11 @@
   .todos-count {
     font-size: 14px;
   }
+
+  .active {
+    border: 1px solid rgba(175, 47, 47, 0.2);
+  }
+
   button {
     margin: 3px;
     padding: 3px 7px;
@@ -28,16 +34,13 @@
     font-size: 14px;
   }
 
-  button:focus {
-  border: 1px solid rgba(175, 47, 47, 0.2);
-  }
 </style>
 
 <footer>
   <div class="todos-count">{todosCount} items</div>
   <div>
-    <button on:click={() => dispatch(SHOW_ALL)}>All</button>
-    <button on:click={() => dispatch(SHOW_ACTIVE)}>Active</button>
-    <button on:click={() => dispatch(SHOW_COMPLETED)}>Completed</button>
+    <button class:active={$filters.show === SHOW_ALL} on:click={() => dispatch(SHOW_ALL)}>All</button>
+    <button class:active={$filters.show === SHOW_ACTIVE} on:click={() => dispatch(SHOW_ACTIVE)}>Active</button>
+    <button class:active={$filters.show === SHOW_COMPLETED} on:click={() => dispatch(SHOW_COMPLETED)}>Completed</button>
   </div>
 </footer>
