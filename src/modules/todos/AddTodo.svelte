@@ -25,7 +25,7 @@
     width: 100%;
   }
   input {
-    border: none;
+    border: 1px solid #eee;
     font-size: 36px;
     font-weight: 100;
     margin: 0;

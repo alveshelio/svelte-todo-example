@@ -16,6 +16,11 @@
     justify-content: space-between;
     border-bottom: 1px solid #eee;
     margin-bottom: 10px;
+    height: 50px;
+  }
+
+  li:hover button {
+    display: block;
   }
 
   .todoDone {
@@ -31,10 +36,19 @@
     transition: color 0.4s;
     word-break: break-all;
   }
+
+  button {
+  display: none;
+  }
 </style>
 
 <li transition:fade>
-  <p class="todoItem" class:todoDone={completed} on:click={() => dispatch(TOGGLE_TODO, { id })}>
+  <p
+  class="todoItem"
+  class:todoDone={completed}
+  on:dblclick={() => console.warn('doubleClick')}
+  on:click={() => dispatch(TOGGLE_TODO, { id })}
+  >
     {text}
   </p>
   <button on:click={() => dispatch(DELETE_TODO, { id })}> 🗑 </button>
