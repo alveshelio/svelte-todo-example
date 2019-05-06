@@ -14,6 +14,7 @@
   li {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     border-bottom: 1px solid #eee;
     margin-bottom: 10px;
     height: 50px;
@@ -25,6 +26,7 @@
 
   .todoDone {
     text-decoration: line-through;
+    color: #ddd;
   }
 
   .todoItem {
@@ -37,19 +39,33 @@
     word-break: break-all;
   }
 
+  .todoItem:hover {
+    cursor: pointer;
+  }
+
   button {
-  display: none;
+    border: none;
+    background: #fff;
+    color: rgba(175, 47, 47, 0.2);
+    display: none;
+    font-size: 40px;
+    font-weight: 100;
+    padding: 0;
+  }
+
+  button:hover {
+    cursor: pointer;
   }
 </style>
 
 <li transition:fade>
   <p
-  class="todoItem"
-  class:todoDone={completed}
-  on:dblclick={() => console.warn('doubleClick')}
-  on:click={() => dispatch(TOGGLE_TODO, { id })}
+    class="todoItem"
+    class:todoDone={completed}
+    on:dblclick={() => console.warn('doubleClick')}
+    on:click={() => dispatch(TOGGLE_TODO, { id })}
   >
     {text}
   </p>
-  <button on:click={() => dispatch(DELETE_TODO, { id })}> 🗑 </button>
+  <button on:click={() => dispatch(DELETE_TODO, { id })}>x</button>
 </li>

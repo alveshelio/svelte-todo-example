@@ -35,6 +35,10 @@
     $filters.show = SHOW_COMPLETED
   }
 
+  const handleCompleteAll = () => {
+    $todos = $todos.map(todo => ({ ...todo, completed: true}))
+  }
+
   $: {setLocalStorageItem('filters', $filters)}
   $: {setLocalStorageItem('todos', $todos)}
 
@@ -53,7 +57,7 @@
 </style>
 
 <section>
-  <AddTodo on:ADD_TODO={handleAddTodo} />
+  <AddTodo on:ADD_TODO={handleAddTodo} on:COMPLETE_ALL={handleCompleteAll} />
   <ul>
     {#each $filteredTodos as todo}
       <TodoItem {...todo} on:TOGGLE_TODO={handleToggleTodo} on:DELETE_TODO={handleDeleteTodo}/>
